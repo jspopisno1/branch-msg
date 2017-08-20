@@ -34,4 +34,5 @@ Though it's easy enough, there is some posible plan depending how it's used.
 - [ ] A way to avoid appending for some commit
 
 
+
 Enjoy. ;)
