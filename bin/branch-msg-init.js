@@ -4,6 +4,8 @@ var fs = require('fs');
 var npath = require('path');
 var utils = require('../lib/utils');
 
+var sp = require('shell-promise');
+
 var cwd = npath.resolve('.');
 var gitPath = utils.j(cwd, '/.git');
 
@@ -14,8 +16,6 @@ var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' + 'branch-msg-append $1\n\n';
 if (!fs.existsSync(gitPath) && fs.statSync(gitPath).isDirectory()) {
     console.log('The current working directory is not an active git repo. Please make sure that you init ' +
         'branch msg tool on an existing git repo.');
-
-    // The hook script should be set as 755 ...
 }
 else {
     var commitMsgHookPath = utils.j(gitPath, 'hooks/commit-msg');
@@ -25,6 +25,9 @@ else {
     if (!fs.existsSync(commitMsgHookPath)) {
         fs.writeFileSync(commitMsgHookPath, '#!/bin/sh\n' + hookContent);
         console.log('`commit-msg` hook is not created yet for the current git repo. A new one has been created.');
+
+        // The hook script should be set as 755 ...
+        sp('chmod 755 ' + commitMsgHookPath);
     }
     else {
         var currentHookContent = fs.readFileSync(commitMsgHookPath, 'utf8');
