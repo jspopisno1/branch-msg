@@ -1,0 +1,1 @@
+console.log('hello ~, please use `npm install -g branch-msg` to start with...');
