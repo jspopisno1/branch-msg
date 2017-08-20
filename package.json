@@ -1,6 +1,6 @@
 {
   "name": "branch-msg",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A npm module cli to append branch info. on message of your every git commit.",
   "main": "index.js",
   "bin": {
@@ -11,5 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "liang",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "shell-promise": "^1.0.0"
+  }
 }
