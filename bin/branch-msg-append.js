@@ -6,6 +6,11 @@ var fs = require('fs');
 // The only argv of commit-msg hook denotes the file path of the commit message
 var commitMsgTempFile = process.argv[process.argv.length - 1];
 
+if (!commitMsgTempFile) {
+    console.log('File of the commit message is not specified. Exit.');
+    process.exit(1);
+}
+
 // Get the commit message
 var commitMsg = fs.readFileSync(commitMsgTempFile).toString();
 

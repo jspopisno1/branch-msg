@@ -73,6 +73,7 @@ else {
 
             var newContent = lines.join('\n');
             fs.writeFileSync(commitMsgHookPath, newContent);
+            console.log('Done. ;)');
         }
     }
 }
