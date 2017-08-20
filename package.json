@@ -1,0 +1,15 @@
+{
+  "name": "branch-msg",
+  "version": "0.1.1",
+  "description": "A npm module cli to append branch info. on message of your every git commit.",
+  "main": "index.js",
+  "bin": {
+    "branch-msg-init": "bin/branch-msg-init.js",
+    "branch-msg-append": "bin/branch-msg-append.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liang",
+  "license": "ISC"
+}
