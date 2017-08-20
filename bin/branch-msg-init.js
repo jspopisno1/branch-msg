@@ -10,7 +10,7 @@ var cwd = npath.resolve('.');
 var gitPath = utils.j(cwd, '/.git');
 
 var SPECIAL_TAG = '@@@SPECIAL_HOOK_FROM_BRANCH_MSG@@@';
-var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' + 'branch-msg-append $1\n\n';
+var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' + 'branch-msg-append "$1"\n\n';
 
 // Check if it's an active git repo
 if (!fs.existsSync(gitPath) && fs.statSync(gitPath).isDirectory()) {
@@ -45,11 +45,14 @@ else {
             lines.some(function (line, idx) {
                 if (/^\s*#!/.exec(line)) {
                     binFound = true;
+                    hashFound = true;
                 }
                 else if (/^\s*#/.exec(line)) {
                     hashFound = true;
                 }
                 else if (hashFound && binFound) {
+                    // We could only insert the statement after `#!/bin/shell` etc.
+                    // And also make it after the first group of hashes.
                     lines.splice(idx, 0, hookContent);
                     inserted = true;
                     return true;
@@ -57,6 +60,9 @@ else {
             });
 
             if (!inserted) {
+
+                // If no bin definition is found, it means the file is some-how broken ?
+                // e.g. empty file ???
                 if (!binFound) {
                     console.log('Bin definition missing in your git `.git/hooks/commit-msg`. Please have a check why.')
                 }
