@@ -14,6 +14,8 @@ var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' + 'branch-msg-append $1\n\n';
 if (!fs.existsSync(gitPath) && fs.statSync(gitPath).isDirectory()) {
     console.log('The current working directory is not an active git repo. Please make sure that you init ' +
         'branch msg tool on an existing git repo.');
+
+    // The hook script should be set as 755 ...
 }
 else {
     var commitMsgHookPath = utils.j(gitPath, 'hooks/commit-msg');
