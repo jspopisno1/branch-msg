@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var sp = require('shell-promise');
-var fs = requrie('fs');
+var fs = require('fs');
 
 var commitMsgTempFile = process.argv[process.argv.length - 1];
 var commitMsg = fs.readFileSync(commitMsgTempFile, 'utf8');
