@@ -6,13 +6,9 @@ var fs = require('fs');
 var commitMsgTempFile = process.argv[process.argv.length - 1];
 var commitMsg = fs.readFileSync(commitMsgTempFile, 'utf8');
 
-sp('git branch')
-    .then(function(result) {
-        console.log(result, commitMsg);
+sp('git rev-parse --abbrev-ref HEAD')
+    .then(function (branchName) {
+        branchName = branchName.replace(/^\s+/, '')
+            .replace(/\s+$/, '');
+        fs.writeFileSync(commitMsgTempFile, commitMsg + '\n\nbranch at : #[ ' + branchName + ' ]#');
     });
-
-console.log('hello append');
-
-process.argv.forEach(function (val, index, array) {
-    console.log(index + ': ' + val);
-});
