@@ -34,5 +34,13 @@ Though it's easy enough, there is some posible plan depending how it's used.
 - [ ] A way to avoid appending for some commit
 - [ ] A way that you can re-init the "branch message amending script"
 
+# Known issue
 
-Enjoy. ;)
+This solution *MIGHT* not work in PC, as it's not fully tested.
+
+The following env is used in for some projects :
+
+- Mac iTerm/Console
+- Mac SourceTree
+
+However, Enjoy. ;)
