@@ -18,7 +18,7 @@ sp('git rev-parse --abbrev-ref HEAD')
     .then(function (branchName) {
 
         // Trim the branch name
-        branchName = branchName.replace(/^\s+/, '').replace(/\s+$/, '');
+        branchName = utils.trim(branchName);
 
         // Append to the commit message and write to the file
         fs.writeFileSync(commitMsgTempFile, commitMsg + '\n\nbranch at : #[ ' + branchName + ' ]#');

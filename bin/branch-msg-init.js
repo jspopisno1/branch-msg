@@ -12,7 +12,9 @@ var gitPath = utils.j(cwd, '/.git');
 var SPECIAL_TAG = '@@@SPECIAL_HOOK_FROM_BRANCH_MSG@@@';
 
 sp('which node').then(function (nodePath) {
+    nodePath = utils.trim(nodePath);
     sp('which branch-msg-append').then(function (appendScriptPath) {
+        appendScriptPath = utils.trim(appendScriptPath);
         var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' +
             // interestingly, $1 is missing after sourcing profile...
             'commit_file="$1"\n' +
