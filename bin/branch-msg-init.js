@@ -11,9 +11,14 @@ var gitPath = utils.j(cwd, '/.git');
 
 var SPECIAL_TAG = '@@@SPECIAL_HOOK_FROM_BRANCH_MSG@@@';
 var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' +
+    // interestingly, $1 is missing after sourcing profile...
     'commit_file="$1"\n' +
+
+    // ensure the needed profile to be loaded for GUI client
     'if [ -e ~/.bash_profile ]\nthen\nsource ~/.bash_profile\nfi\n' +
     'if [ -e ~/.profile ]\nthen\nsource ~/.profile\nfi\n' +
+
+    // run the branch-msg-append
     'branch-msg-append "$commit_file"\n\n';
 
 // Check if it's an active git repo
