@@ -10,7 +10,10 @@ var cwd = npath.resolve('.');
 var gitPath = utils.j(cwd, '/.git');
 
 var SPECIAL_TAG = '@@@SPECIAL_HOOK_FROM_BRANCH_MSG@@@';
-var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' + 'branch-msg-append "$1"\n\n';
+var hookContent = '\n\n# ' + SPECIAL_TAG + '\n' +
+    'if [ -e ~/.bash_profile ]\nthen\nsource ~/.bash_profile\nfi\n' +
+    'if [ -e ~/.profile ]\nthen\nsource ~/.profile\nfi\n' +
+    'branch-msg-append "$1"\n\n';
 
 // Check if it's an active git repo
 if (!fs.existsSync(gitPath) && fs.statSync(gitPath).isDirectory()) {
