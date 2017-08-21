@@ -2,9 +2,9 @@
 
 All we know that Git is designed to "forget" the original branch that a commit comes from.
 
-This information sometimes is important in some scenarios. For example, to matching a commit with your issue tracking system. Or, make it easier to digging into the history to reason about a certain bug.
+This information is important (or useful) in some scenarios. For example, to matching a commit with your issue tracking system. Or, make it easier to dig into the history to reason about a certain bug.
 
-For actually capture such information, in some project, we force the team to leave the "issue id" or we write down the branch explicitly.
+For actually capture such information, in some project, we are forced to leave the "issue id" or the "branch name" explicitly. That's tedious.
 
 # Here is `branch-msg`
 
