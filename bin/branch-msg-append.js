@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 var sp = require('shell-promise');
 var fs = require('fs');
