@@ -32,7 +32,7 @@ Though it's easy enough, there is some posible plan depending how it's used.
 
 - [ ] Custom commit message template
 - [ ] A way to avoid appending for some commit
-
+- [ ] A way that you can re-init the "branch message amending script"
 
 
 Enjoy. ;)
